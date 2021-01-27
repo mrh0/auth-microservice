@@ -1,10 +1,14 @@
 import fs = require("fs");
 
 interface Secrets {
-    secret: string
+    pepper: string,
+    mongodb_pwd: string
 };
 
-let json = fs.readFileSync(__dirname + '/secrets.json', 'utf8');
-let secrets: Secrets = JSON.parse(json);
-
-export default secrets;
+export default function load() {
+    let json = fs.readFileSync(__dirname + '/../secrets.json', 'utf8');
+    let secrets: Secrets = JSON.parse(json);
+    
+    process.env.MONGO_ATLAS_PW = secrets.mongodb_pwd;
+    process.env.HASH_PEPPER = secrets.pepper;
+}

@@ -4,8 +4,7 @@ import secrets from "./secrets";
 import {LoginCredentials, User} from "./common";
 
 async function signUp(credentials: LoginCredentials) {
-    let salt = await bcrypt.genSalt();
-    let hpwd = await bcrypt.hash(credentials.password, salt);
+    
     // ...
 }
 

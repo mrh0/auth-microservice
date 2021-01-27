@@ -1,1 +1,1 @@
-tsc && ./node
+tsc && node ./
