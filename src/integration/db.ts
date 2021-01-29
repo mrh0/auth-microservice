@@ -1,24 +1,9 @@
 import mongoose = require("mongoose");
 import bcrypt = require("bcrypt");
-import {LoginCredentials, User} from "./types";
+import {LoginCredentials, User} from "../model/types";
+import { UserSchema } from "../model/schemas";
 
-mongoose.connect("mongodb+srv://kth10:" + process.env.MONGO_ATLAS_PW + "@cluster0-wqtf8.mongodb.net/test?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
-export let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log("mongoose connected!");
-});
-
-const userSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    username: {type: String, unique:true, required: true, dropDups:true},
-    hpwd: {type: String, required: true}
-});
-const UserSchema = mongoose.model('User', userSchema);
 
 async function createUser(credentials: LoginCredentials) {
     if(await userExist(credentials.username))

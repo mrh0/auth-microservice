@@ -1,7 +1,7 @@
 import jwt = require("jsonwebtoken");
 import bcrypt = require("bcrypt");
-import {LoginCredentials, User, Response} from "./types";
-import db from "./db";
+import {LoginCredentials, User, Response} from "../model/types";
+import db from "../integration/db";
 
 async function signup(credentials: LoginCredentials) {
     try {

@@ -1,5 +1,5 @@
-import auth from "./src/auth";
-import { LoginCredentials } from "./src/types";
+import auth from "./src/controller/auth";
+import { LoginCredentials } from "./src/model/types";
 export default async function selfTest(params = {}) {
 
     let login: LoginCredentials = {username: "Test3", password: "pwd"};

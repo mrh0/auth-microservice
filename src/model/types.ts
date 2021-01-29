@@ -8,8 +8,7 @@ export interface LoginCredentials {
 export interface User {
     _id: mongoose.ObjectId
     username: string,
-    hpwd: string,
-    salt?: string //Maybe?
+    hpwd: string
 }
 
 export interface Response<T> {
